@@ -22,7 +22,8 @@
         "psr-4": { "Omnipay\\SecurePay\\" : "src/" }
     },
     "require": {
-        "omnipay/common": "~2.0"
+        "omnipay/common": "~2.0",
+        "zipmoney/zipmoney-php": "1.0.3.1"
     },
     "require-dev": {
         "omnipay/tests": "~2.0"
