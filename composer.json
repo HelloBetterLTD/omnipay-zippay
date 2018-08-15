@@ -1,0 +1,30 @@
+{
+    "name": "silverstripers/omnipay-zippay",
+    "type": "library",
+    "description": "Zippay driver for the Omnipay payment processing library",
+    "keywords": [
+        "gateway",
+        "merchant",
+        "omnipay",
+        "pay",
+        "payment",
+        "Zippay"
+    ],
+    "homepage": "https://github.com/SilverStripers/omnipay-zippay",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nivanka Fonseka",
+            "email": "nivanka@silverstripers.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Omnipay\\SecurePay\\" : "src/" }
+    },
+    "require": {
+        "omnipay/common": "~2.0"
+    },
+    "require-dev": {
+        "omnipay/tests": "~2.0"
+    }
+}
