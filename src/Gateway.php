@@ -11,6 +11,7 @@ namespace SilverStripers\OmnipayZipPay;
 
 
 use Omnipay\Common\AbstractGateway;
+use zipMoney\Configuration;
 
 class Gateway extends AbstractGateway
 {
@@ -24,13 +25,13 @@ class Gateway extends AbstractGateway
 	{
 		return array(
 			'merchant_id' => '',
-			'merchant_key' => '',
-			'environment' => 'production', // sandbox | production
+			'merchant_key' => ''
 		);
 	}
 
 	public function setMerchantID($merchantID)
 	{
+		Configuration::$merchant_id = $merchantID;
 		return $this->setParameter('merchant_id', $merchantID);
 	}
 
@@ -41,6 +42,7 @@ class Gateway extends AbstractGateway
 
 	public function setMerchantKey($merchantKey)
 	{
+		Configuration::$merchant_key = $merchantKey;
 		return $this->setParameter('merchant_key', $merchantKey);
 	}
 
@@ -49,14 +51,10 @@ class Gateway extends AbstractGateway
 		return $this->getParameter('merchant_key');
 	}
 
-	public function setEnvironment($environment)
+	public function setTestMode($value)
 	{
-		return $this->setParameter('environment', $environment);
-	}
-
-	public function getEnvironment()
-	{
-		return $this->getParameter('environment');
+		Configuration::$environment = $value ? 'production' : 'sandbox';
+		return $this->setParameter('testMode', $value);
 	}
 
 	public function purchase(array $parameters = array())
@@ -68,6 +66,7 @@ class Gateway extends AbstractGateway
 	{
 		return $this->createRequest('\SilverStripers\OmnipayZipPay\Messages\CompletePurchaseRequest', $parameters);
 	}
+
 
 
 }

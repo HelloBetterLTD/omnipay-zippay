@@ -16,7 +16,6 @@ use Omnipay\Common\Message\RedirectResponseInterface;
 class PurchaseResponse extends AbstractResponse implements RedirectResponseInterface
 {
 
-	protected $sandBoxEndpoint = 'https://www.2checkout.com/checkout/purchase';
-	protected $productionEndpoint = 'https://www.2checkout.com/checkout/purchase';
+	
 
 }
