@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace SilverStripers\OmnipayZipPay\Messages;
+namespace SilverStripers\OmnipayZipPay\Message;
 
 
 class CompletePurchaseResponse

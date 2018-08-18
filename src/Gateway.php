@@ -59,12 +59,12 @@ class Gateway extends AbstractGateway
 
 	public function purchase(array $parameters = array())
 	{
-		return $this->createRequest('\SilverStripers\OmnipayZipPay\Messages\PurchaseRequest', $parameters);
+		return $this->createRequest('\SilverStripers\OmnipayZipPay\Message\PurchaseRequest', $parameters);
 	}
 
 	public function completePurchase(array $parameters = array())
 	{
-		return $this->createRequest('\SilverStripers\OmnipayZipPay\Messages\CompletePurchaseRequest', $parameters);
+		return $this->createRequest('\SilverStripers\OmnipayZipPay\Message\CompletePurchaseRequest', $parameters);
 	}
 
 
