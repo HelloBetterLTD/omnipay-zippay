@@ -10,7 +10,28 @@
 namespace SilverStripers\OmnipayZipPay\Message;
 
 
-class CompletePurchaseResponse
+use Omnipay\Common\Message\AbstractResponse;
+
+class CompletePurchaseResponse extends AbstractResponse
 {
+	public function isSuccessful()
+	{
+		return ''; // TODO;
+	}
+
+	public function getMessage()
+	{
+		return ''; // TODO;
+	}
+
+	public function getCode()
+	{
+		return ''; // TODO;
+	}
+
+	public function getTransactionReference()
+	{
+		return ''; // TODO;
+	}
 
 }

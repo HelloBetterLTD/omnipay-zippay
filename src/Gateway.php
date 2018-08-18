@@ -53,7 +53,7 @@ class Gateway extends AbstractGateway
 
 	public function setTestMode($value)
 	{
-		Configuration::$environment = $value ? 'production' : 'sandbox';
+		Configuration::$environment = $value ? 'sandbox' : 'production';
 		return $this->setParameter('testMode', $value);
 	}
 
