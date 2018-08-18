@@ -19,7 +19,10 @@
         }
     ],
     "autoload": {
-        "psr-4": { "SilverStripers\\OmnipayZipPay\\" : "src/" }
+        "psr-4": {
+            "SilverStripers\\OmnipayZipPay\\" : "src/",
+            "SilverStripers\\OmnipayZipPay\\Message\\" : "src/Message/"
+        }
     },
     "require": {
         "omnipay/common": "~2.0",
