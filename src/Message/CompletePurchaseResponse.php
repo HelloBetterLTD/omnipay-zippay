@@ -16,22 +16,22 @@ class CompletePurchaseResponse extends AbstractResponse
 {
 	public function isSuccessful()
 	{
-		return ''; // TODO;
+		return true;
 	}
 
 	public function getMessage()
 	{
-		return ''; // TODO;
+		return '';
 	}
 
 	public function getCode()
 	{
-		return ''; // TODO;
+		return '';
 	}
 
 	public function getTransactionReference()
 	{
-		return ''; // TODO;
+		return '';
 	}
 
 }
