@@ -18,11 +18,17 @@ use zipMoney\Request\Order;
 class PurchaseRequest extends AbstractRequest
 {
 
+	public function getOrderId()
+	{
+		$orderID = $this->parameters->get('order_id');
+		return $orderID ? $orderID : $this->getTransactionId();
+	}
+
 	public function getData()
 	{
 		return array(
 			'currency_code' => $this->getCurrency(),
-			'order_id' => $this->getTransactionId(),
+			'order_id' => $this->getOrderId(),
 			'success_url' => $this->getReturnUrl(),
 			'cancel_url' => $this->getCancelUrl(),
 			'error_url' => $this->getNotifyUrl(),
@@ -63,7 +69,6 @@ class PurchaseRequest extends AbstractRequest
 				$this->response->setRedirectURL($redirectURL);
 			} else {
 			}
-
 			return $this->response;
 
 		} catch (\Exception $e){
