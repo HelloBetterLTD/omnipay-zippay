@@ -24,11 +24,22 @@ class PurchaseRequest extends AbstractRequest
 		return $orderID ? $orderID : $this->getTransactionId();
 	}
 
+	public function setCartURL($url)
+	{
+		return $this->setParameter('cart_url', $url);
+	}
+
+	public function getCartURL()
+	{
+		return $this->getParameter('cart_url');
+	}
+
 	public function getData()
 	{
 		return array(
 			'currency_code' => $this->getCurrency(),
 			'order_id' => $this->getOrderId(),
+			'cart_url' => $this->getCartURL(),
 			'success_url' => $this->getReturnUrl(),
 			'cancel_url' => $this->getCancelUrl(),
 			'error_url' => $this->getNotifyUrl(),
@@ -47,6 +58,7 @@ class PurchaseRequest extends AbstractRequest
 		$checkout->request->in_store = false;
 
 
+		$checkout->request->cart_url =  $data['cart_url'];
 		$checkout->request->success_url =  $data['success_url'];
 		$checkout->request->cancel_url =  $data['cancel_url'];
 		$checkout->request->error_url =  $data['error_url'];
