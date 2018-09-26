@@ -10,6 +10,7 @@
 namespace SilverStripers\OmnipayZipPay\Message;
 
 
+use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Common\Message\AbstractRequest;
 use zipMoney\Api\Checkout;
 use zipMoney\Configuration;
@@ -72,7 +73,6 @@ class PurchaseRequest extends AbstractRequest
 		$order->total = $data['total'];
 
 		$checkout->request->order = $order;
-
 		try{
 			$response = $checkout->process();
 			$this->response = new PurchaseResponse($this, $data);
@@ -80,12 +80,16 @@ class PurchaseRequest extends AbstractRequest
 				$redirectURL = $response->getRedirectUrl();
 				$this->response->setRedirectURL($redirectURL);
 			} else {
+				$responseArray = $response->toArray();
+				$message = isset($responseArray['Message']) ? $responseArray['Message'] : null;
+				$exception = new InvalidRequestException($message);
+				throw $exception;
 			}
 			return $this->response;
 
 		} catch (\Exception $e){
-			echo $e->getMessage();
-			// TODO: Handle Error
+			$exception = new InvalidRequestException($e->getMessage());
+			throw $exception;
 		}
 
 	}
