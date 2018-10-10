@@ -24,38 +24,57 @@ class Gateway extends AbstractGateway
 	public function getDefaultParameters()
 	{
 		return array(
-			'merchant_id' => '',
-			'merchant_key' => ''
+			'api_key' => '',
+			'api_key_prefix' => 'Bearer',
+			'platform' => ''
 		);
 	}
 
-	public function setMerchantID($merchantID)
+
+	public function setApiKey($apiKey)
 	{
-		Configuration::$merchant_id = $merchantID;
-		return $this->setParameter('merchant_id', $merchantID);
+		Configuration::getDefaultConfiguration()->setApiKey('Authorization', $apiKey);
+		return $this->setParameter('api_key', $apiKey);
 	}
 
-	public function getMerchantID()
+	public function getApiKey()
 	{
-		return $this->getParameter('merchant_id');
+		return $this->getParameter('api_key');
 	}
 
-	public function setMerchantKey($merchantKey)
+	public function setApiKeyPrefix($prefix)
 	{
-		Configuration::$merchant_key = $merchantKey;
-		return $this->setParameter('merchant_key', $merchantKey);
+		if($prefix) {
+			Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', $prefix);
+		}
+		return $this->setParameter('api_key_prefix', $prefix);
 	}
 
-	public function getMerchantKey()
+	public function getApiKeyPrefix()
 	{
-		return $this->getParameter('merchant_key');
+		return $this->getParameter('api_key_prefix');
+	}
+
+	public function setPlatform($platform)
+	{
+		Configuration::getDefaultConfiguration()->setPlatform($platform);
+		return $this->setParameter('platform', $platform);
+	}
+
+
+	public function getPlatform()
+	{
+		return $this->getParameter('platform');
 	}
 
 	public function setTestMode($value)
 	{
-		Configuration::$environment = $value ? 'sandbox' : 'production';
+		$env = $value ? 'sandbox' : 'production';
+		Configuration::getDefaultConfiguration()->setEnvironment($env);
 		return $this->setParameter('testMode', $value);
 	}
+
+
 
 	public function purchase(array $parameters = array())
 	{
