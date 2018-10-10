@@ -25,7 +25,7 @@
     },
     "require": {
         "omnipay/common": "~2.0",
-        "zipmoney/merchantapi-php": "1.0.7"
+        "zipmoney/zipmoney-php": "1.0.3.1"
     },
     "require-dev": {
         "omnipay/tests": "~2.0"
