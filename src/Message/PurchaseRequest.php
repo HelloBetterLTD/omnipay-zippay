@@ -52,7 +52,7 @@ class PurchaseRequest extends AbstractRequest
 	public function sendData($data)
 	{
 		$checkout = new Checkout();
-		$checkout->request->charge = false;
+		$checkout->request->charge = true;
 		$checkout->request->currency_code = $data['currency_code'];
 		$checkout->request->txn_id = false;
 		$checkout->request->order_id =  $data['order_id'];
