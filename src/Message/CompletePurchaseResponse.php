@@ -11,12 +11,15 @@ namespace SilverStripers\OmnipayZipPay\Message;
 
 
 use Omnipay\Common\Message\AbstractResponse;
+use zipMoney\Request\QueryOrder;
 
 class CompletePurchaseResponse extends AbstractResponse
 {
 	public function isSuccessful()
 	{
-		return true;
+
+		$data = $this->getRequest()->getData();
+		return isset($data['order_success']) && $data['order_success'] == 1;
 	}
 
 	public function getMessage()
